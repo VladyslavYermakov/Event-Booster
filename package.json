@@ -13,9 +13,10 @@
   "license": "ISC",
   "author": "Vladyslav",
   "type": "commonjs",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel src/*.html",
+    "build": "parcel build src/index.html --public-url ./",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1"
