@@ -1,0 +1,27 @@
+{
+  "name": "event-booster",
+  "version": "1.0.0",
+  "description": "Find best events around the world ",
+  "homepage": "https://github.com/VladyslavYermakov/Event-Booster#readme",
+  "bugs": {
+    "url": "https://github.com/VladyslavYermakov/Event-Booster/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladyslavYermakov/Event-Booster.git"
+  },
+  "license": "ISC",
+  "author": "Vladyslav",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
+  },
+  "devDependencies": {
+    "github-pages": "^3.0.2",
+    "parcel": "^2.16.4"
+  }
+}
