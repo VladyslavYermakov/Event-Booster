@@ -1,0 +1,47 @@
+@import "./vlad.css";
+@import "./olena.css";
+@import "./polina.css";
+
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+input,
+button,
+img,
+a,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 15px;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        width: 768px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+}
