@@ -45,3 +45,12 @@ li {
         width: 1200px;
     }
 }
+
+.concerts {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.concerts img {
+    border-radius: 20px;
+}
