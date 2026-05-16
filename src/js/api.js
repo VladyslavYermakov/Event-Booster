@@ -1,8 +1,8 @@
 import { BASE_URL, API_KEY, page, concertList } from "./index.js"
 export function renderConcerts(concerts, concertList) {
     concertList.innerHTML = "";
-
-    concerts.forEach(concert => {
+    const events = concerts._embedded.events
+   events.forEach(concert => {
         const item = document.createElement("li");
 
         const image = concert.images[0]?.url;
@@ -23,12 +23,12 @@ export function renderConcerts(concerts, concertList) {
 export async function fetchConcerts(page = 1) {
     try {
         const response = await fetch(
-            `${BASE_URL}/events.json?apikey=${API_KEY}&page=${page}&size=20`
+            `${BASE_URL}/events.json?apikey=${API_KEY}&page=${page}`
         );
 
         const data = await response.json();
-
-        return data._embedded.events;
+ console.log(data._embedded.events);
+        return data;
     } catch (err) {
         console.log(err);
     }

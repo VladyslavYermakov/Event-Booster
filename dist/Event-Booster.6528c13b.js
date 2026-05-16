@@ -207,11 +207,11 @@
       });
     }
   }
-})({"b4w03":[function(require,module,exports,__globalThis) {
+})({"gloTq":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 54421;
+var HMR_SERVER_PORT = 55316;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -718,20 +718,23 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_KEY", ()=>API_KEY);
 parcelHelpers.export(exports, "BASE_URL", ()=>BASE_URL);
-parcelHelpers.export(exports, "page", ()=>page);
+parcelHelpers.export(exports, "totalPages", ()=>totalPages);
 parcelHelpers.export(exports, "concertsList", ()=>concertsList);
 var _api = require("./api");
+var _pagination = require("./pagination");
 const API_KEY = "UOJv5w0xzX0Zk3IQ7DLXZqMUHB8RGG71";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
-let page = 1;
+let totalPages = 0;
 const concertsList = document.querySelector(".concerts");
 async function loadConcerts() {
     const concerts = await (0, _api.fetchConcerts)();
+    totalPages = concerts.page.totalPages;
     (0, _api.renderConcerts)(concerts, concertsList);
+    (0, _pagination.renderPagination)(totalPages);
 }
 loadConcerts();
 
-},{"./api":"4yEOZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4yEOZ":[function(require,module,exports,__globalThis) {
+},{"./api":"4yEOZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./pagination":"80yTG"}],"4yEOZ":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderConcerts", ()=>renderConcerts);
@@ -739,7 +742,8 @@ parcelHelpers.export(exports, "fetchConcerts", ()=>fetchConcerts);
 var _indexJs = require("./index.js");
 function renderConcerts(concerts, concertList) {
     concertList.innerHTML = "";
-    concerts.forEach((concert)=>{
+    const events = concerts._embedded.events;
+    events.forEach((concert)=>{
         const item = document.createElement("li");
         const image = concert.images[0]?.url;
         const name = concert.name;
@@ -756,9 +760,10 @@ function renderConcerts(concerts, concertList) {
 }
 async function fetchConcerts(page = 1) {
     try {
-        const response = await fetch(`${(0, _indexJs.BASE_URL)}/events.json?apikey=${(0, _indexJs.API_KEY)}&page=${page}&size=20`);
+        const response = await fetch(`${(0, _indexJs.BASE_URL)}/events.json?apikey=${(0, _indexJs.API_KEY)}&page=${page}`);
         const data = await response.json();
-        return data._embedded.events;
+        console.log(data._embedded.events);
+        return data;
     } catch (err) {
         console.log(err);
     }
@@ -794,6 +799,19 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["b4w03","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{}],"80yTG":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
+var _index = require("./index");
+const pagination = document.querySelector(".pagination-container");
+function renderPagination(totalPages) {
+    let markup = "";
+    for(let i = 0; i < totalPages; i++)markup += `    <button type="button" 
+     class="pagination-btn" data-page="${i}">${i + 1}</button>`;
+    pagination.innerHTML = markup;
+}
+
+},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["gloTq","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
