@@ -20,7 +20,7 @@ export function renderConcerts(concerts, concertList) {
         concertList.append(item);
     });
 }
-export async function fetchConcerts(page = 1) {
+export async function fetchConcerts(page = 0) {
     try {
         const response = await fetch(
             `${BASE_URL}/events.json?apikey=${API_KEY}&page=${page}`

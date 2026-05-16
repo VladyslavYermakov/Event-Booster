@@ -207,11 +207,11 @@
       });
     }
   }
-})({"gloTq":[function(require,module,exports,__globalThis) {
+})({"lIge2":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 55316;
+var HMR_SERVER_PORT = 56448;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -720,15 +720,18 @@ parcelHelpers.export(exports, "API_KEY", ()=>API_KEY);
 parcelHelpers.export(exports, "BASE_URL", ()=>BASE_URL);
 parcelHelpers.export(exports, "totalPages", ()=>totalPages);
 parcelHelpers.export(exports, "concertsList", ()=>concertsList);
+parcelHelpers.export(exports, "loadConcerts", ()=>loadConcerts);
 var _api = require("./api");
 var _pagination = require("./pagination");
 const API_KEY = "UOJv5w0xzX0Zk3IQ7DLXZqMUHB8RGG71";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
 let totalPages = 0;
+let currentPage = 0;
 const concertsList = document.querySelector(".concerts");
 async function loadConcerts() {
     const concerts = await (0, _api.fetchConcerts)();
     totalPages = concerts.page.totalPages;
+    currentPage = concerts.page.number;
     (0, _api.renderConcerts)(concerts, concertsList);
     (0, _pagination.renderPagination)(totalPages);
 }
@@ -758,7 +761,7 @@ function renderConcerts(concerts, concertList) {
         concertList.append(item);
     });
 }
-async function fetchConcerts(page = 1) {
+async function fetchConcerts(page = 0) {
     try {
         const response = await fetch(`${(0, _indexJs.BASE_URL)}/events.json?apikey=${(0, _indexJs.API_KEY)}&page=${page}`);
         const data = await response.json();
@@ -803,6 +806,7 @@ exports.export = function(dest, destName, get) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
+var _api = require("./api");
 var _index = require("./index");
 const pagination = document.querySelector(".pagination-container");
 function renderPagination(totalPages) {
@@ -811,7 +815,12 @@ function renderPagination(totalPages) {
      class="pagination-btn" data-page="${i}">${i + 1}</button>`;
     pagination.innerHTML = markup;
 }
+pagination.addEventListener("click", (event)=>{
+    if (!event.target.classList.contains("pagination-btn")) return;
+    const page = Number(event.target.dataset.page);
+    (0, _index.loadConcerts)(page);
+});
 
-},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["gloTq","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./api":"4yEOZ"}]},["lIge2","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
