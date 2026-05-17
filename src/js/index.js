@@ -7,8 +7,8 @@ export let totalPages = 0;
  let currentPage = 0;
 export const concertsList = document.querySelector(".concerts");
 
-export async function loadConcerts() {
-  const concerts = await fetchConcerts();
+export async function loadConcerts(page) {
+  const concerts = await fetchConcerts(page);
   totalPages = concerts.page.totalPages;
   currentPage = concerts.page.number;
   renderConcerts(concerts, concertsList);

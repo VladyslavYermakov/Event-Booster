@@ -12,5 +12,6 @@ export function renderPagination(totalPages) {
 pagination.addEventListener("click", (event) => {
   if (!event.target.classList.contains("pagination-btn")) return;
   const page = Number(event.target.dataset.page);
+  console.log(page)
   loadConcerts(page);
 });
