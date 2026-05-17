@@ -207,11 +207,11 @@
       });
     }
   }
-})({"7YiuO":[function(require,module,exports,__globalThis) {
+})({"djINU":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 56552;
+var HMR_SERVER_PORT = 57738;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -718,22 +718,19 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_KEY", ()=>API_KEY);
 parcelHelpers.export(exports, "BASE_URL", ()=>BASE_URL);
-parcelHelpers.export(exports, "totalPages", ()=>totalPages);
 parcelHelpers.export(exports, "concertsList", ()=>concertsList);
 parcelHelpers.export(exports, "loadConcerts", ()=>loadConcerts);
 var _api = require("./api");
 var _pagination = require("./pagination");
 const API_KEY = "UOJv5w0xzX0Zk3IQ7DLXZqMUHB8RGG71";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
-let totalPages = 0;
 let currentPage = 0;
 const concertsList = document.querySelector(".concerts");
 async function loadConcerts(page = 0) {
     const concerts = await (0, _api.fetchConcerts)(page);
-    totalPages = concerts.page.totalPages;
     currentPage = concerts.page.number;
     (0, _api.renderConcerts)(concerts, concertsList);
-    (0, _pagination.renderPagination)(totalPages);
+    (0, _pagination.renderPagination)();
 }
 loadConcerts();
 
@@ -808,9 +805,9 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
 var _index = require("./index");
 const pagination = document.querySelector(".pagination-container");
-function renderPagination(totalPages) {
+function renderPagination() {
     let markup = "";
-    for(let i = 0; i < totalPages; i++)markup += `    <button type="button" 
+    for(let i = 0; i < 30; i++)markup += `    <button type="button" 
      class="pagination-btn" data-page="${i}">${i + 1}</button>`;
     pagination.innerHTML = markup;
 }
@@ -820,6 +817,6 @@ pagination.addEventListener("click", (event)=>{
     (0, _index.loadConcerts)(page);
 });
 
-},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["7YiuO","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["djINU","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map

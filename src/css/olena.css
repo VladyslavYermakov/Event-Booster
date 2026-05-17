@@ -10,6 +10,7 @@
   color: white;
   text-align: center;
   border-color: transparent;
+  cursor: pointer;
 }
 .pagination-btn:hover {
   border: 1px solid #dc56c5;
