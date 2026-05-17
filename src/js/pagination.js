@@ -1,5 +1,4 @@
-import { fetchConcerts } from "./api";
-import { page, loadConcerts } from "./index";
+import {  loadConcerts } from "./index";
 const pagination = document.querySelector(".pagination-container");
 export function renderPagination(totalPages) {
   let markup = "";
@@ -12,6 +11,5 @@ export function renderPagination(totalPages) {
 pagination.addEventListener("click", (event) => {
   if (!event.target.classList.contains("pagination-btn")) return;
   const page = Number(event.target.dataset.page);
-  console.log(page)
   loadConcerts(page);
 });

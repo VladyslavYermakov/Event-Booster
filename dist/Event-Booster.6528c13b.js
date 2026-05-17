@@ -207,11 +207,11 @@
       });
     }
   }
-})({"imHJQ":[function(require,module,exports,__globalThis) {
+})({"7YiuO":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 55353;
+var HMR_SERVER_PORT = 56552;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -728,7 +728,7 @@ const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
 let totalPages = 0;
 let currentPage = 0;
 const concertsList = document.querySelector(".concerts");
-async function loadConcerts(page) {
+async function loadConcerts(page = 0) {
     const concerts = await (0, _api.fetchConcerts)(page);
     totalPages = concerts.page.totalPages;
     currentPage = concerts.page.number;
@@ -806,7 +806,6 @@ exports.export = function(dest, destName, get) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
-var _api = require("./api");
 var _index = require("./index");
 const pagination = document.querySelector(".pagination-container");
 function renderPagination(totalPages) {
@@ -818,10 +817,9 @@ function renderPagination(totalPages) {
 pagination.addEventListener("click", (event)=>{
     if (!event.target.classList.contains("pagination-btn")) return;
     const page = Number(event.target.dataset.page);
-    console.log(page);
     (0, _index.loadConcerts)(page);
 });
 
-},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./api":"4yEOZ"}]},["imHJQ","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"./index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["7YiuO","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
