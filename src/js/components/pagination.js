@@ -1,6 +1,6 @@
-import { loadConcerts } from "./index";
+import { loadConcerts } from ".././index";
 const pagination = document.querySelector(".pagination-container");
-export function renderPagination() {
+export function renderPagination(loadConcerts) {
   let markup = "";
   for (let i = 0; i < 30; i++) {
     markup += `    <button type="button" 
