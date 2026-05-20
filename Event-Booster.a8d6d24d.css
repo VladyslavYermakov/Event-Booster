@@ -1,6 +1,7 @@
 .pagination-btn {
   color: #fff;
   text-align: center;
+  cursor: pointer;
   background: none;
   border-color: #0000;
   width: 30px;
