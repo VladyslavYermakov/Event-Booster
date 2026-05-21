@@ -12,11 +12,50 @@
   }
 }
 
+@media (width >= 1200px) {
+  .concert-image {
+    width: 180px;
+    height: 227px;
+  }
+}
+
+.header-title {
+  letter-spacing: 0%;
+  text-align: center;
+  color: #dc56c5;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 100%;
+}
+
+@media (width >= 768px) and (width <= 1199px) {
+  .header-title {
+    font-size: 30px;
+  }
+}
+
+@media (width >= 1200px) {
+  .header-title {
+    font-size: 50px;
+  }
+}
+
 .concert-title {
   color: #dc56c5;
 }
 
 .concert-date, .concert-place {
   color: #fff;
+}
+
+.footer-text {
+  letter-spacing: 0%;
+  text-align: center;
+  color: #939393;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
 }
 /*# sourceMappingURL=Event-Booster.f81ae705.css.map */
