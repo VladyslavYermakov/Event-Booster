@@ -13,7 +13,7 @@ export function renderConcerts(concerts, concertList) {
         concert._embedded?.venues[0]?.name || "Unknown";
 
         item.innerHTML = `
-        <img class="concert-image" src="${image}" alt="${name}" width="250px">
+        <img class="concert-image" src="${image}" alt="${name}">
         <h3 class="concert-title">${name}</h3>
         <p class="concert-date">${date}</p>
         <p class="concert-place">${place}</p>
