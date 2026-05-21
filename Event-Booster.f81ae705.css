@@ -12,13 +12,6 @@
   }
 }
 
-@media (width >= 1200px) {
-  .concert-image {
-    width: 180px;
-    height: 227px;
-  }
-}
-
 .concert-title {
   color: #dc56c5;
 }
