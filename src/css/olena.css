@@ -1,1 +1,53 @@
 /*mobile first!!!*/
+
+.pagination-btn {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  color: white;
+  text-align: center;
+  border-color: transparent;
+  cursor: pointer;
+}
+.pagination-btn:hover {
+  border: 1px solid #dc56c5;
+  color: #dc56c5;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-width: 1px;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .pagination-btn {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+  }
+  .pagination-btn:hover {
+    border: 1px solid #dc56c5;
+    color: #dc56c5;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-width: 1px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pagination-btn {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+  }
+  .pagination-btn:hover {
+    border: 1px solid #dc56c5;
+    color: #dc56c5;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-width: 1px;
+  }
+}

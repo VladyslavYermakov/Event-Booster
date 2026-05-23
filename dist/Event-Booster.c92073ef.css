@@ -1,4 +1,5 @@
 h1, h2, h3, p, ul, li, input, button, img, a, body {
+  background-color: #000;
   margin: 0;
   padding: 0;
 }
@@ -34,9 +35,5 @@ ul, li {
 .concerts {
   flex-direction: column-reverse;
   display: flex;
-}
-
-.concerts img {
-  border-radius: 20px;
 }
 /*# sourceMappingURL=Event-Booster.c92073ef.css.map */

@@ -1,19 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Booster</title>
+    <link rel="icon" type="svg" href="./img/Event-booster-logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/olena.css" />
+    <link rel="stylesheet" href="./css/vlad.css" />
+    <link rel="stylesheet" href="./css/polina.css" />
   </head>
   <body>
-    <a href="" class="header-logo"></a>
-    <h1 class="header-ttile">FIND BEST EVENTS AROUND THE WORLD</h1>
-    <input type="text" /><button type="submit"></button>
+    <header>
+        <a href="" class="header-logo"><img src="./img/Event-booster-logo.svg" alt=""></a>
+        <h1 class="header-title">FIND BEST EVENTS <br>AROUND THE WORLD</h1>
+        <input type="text"/><button type="submit"></button>
+         <select class="countries">
+              <option value="">Choose country</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="MX">Mexico</option>
+              <option value="AU">Australia</option>
+              <option value="NZ">New Zealand</option>
+              <option value="GB">United Kingdom</option>
+              <option value="IE">Ireland</option>
+          </select>
+    </header>
     <ul class="concerts"></ul>
-
-<div class="pagination-container"></div>
-    
-    <script type="module" src=".././src/js/index.js"></script>
-</body>
+    <div class="pagination-container"></div>
+    <footer class="footer">
+        <p class="footer-text">© 2021 | All Rights Reserved | Developed with ♥ by GoIT Students</p>
+    </footer>
+    <script type="module" src="./js/index.js"></script>
+  </body>
 </html>

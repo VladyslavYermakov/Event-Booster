@@ -1,0 +1,2 @@
+h1,h2,h3,p,ul,li,input,button,img,a,body{background-color:#000;margin:0;padding:0}ul,li{text-decoration:none;list-style:none}.is-hidden{opacity:0;pointer-events:none}.container{width:100%;margin:0 auto;padding:0 15px}@media (width>=768px) and (width<=1199px){.container{width:768px}}@media (width>=1200px){.container{width:1200px}}.concerts{flex-direction:column-reverse;display:flex}.concerts img{border-radius:20px}
+/*# sourceMappingURL=Event-Booster.afc2733f.css.map */
