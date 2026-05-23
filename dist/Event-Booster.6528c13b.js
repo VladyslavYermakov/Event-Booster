@@ -724,6 +724,7 @@ var _paginationJs = require("./components/pagination.js");
 //import { openModal } from "./components/modal.js";
 const concertsList = document.querySelector(".concerts");
 const modalBody = document.querySelector(".modalBody");
+const backdrop = document.querySelector("#modal");
 let currentPage = 0;
 async function loadConcerts(page = 0) {
     const concerts = await (0, _concertsApiJs.fetchConcerts)(page);
@@ -733,13 +734,16 @@ async function loadConcerts(page = 0) {
 loadConcerts();
 (0, _paginationJs.renderPagination)(loadConcerts);
 //fetchByID("17AYv0G65p_a4Yw");
-concertsList.addEventListener("click", (event)=>{
+concertsList.addEventListener("click", async (event)=>{
     const item = event.target.closest(".concert-item");
     if (!item) return;
     const id = item.dataset.id;
-    const data = (0, _concertsApiJs.fetchByID)(id);
+    const data = await (0, _concertsApiJs.fetchByID)(id);
+    const concert = data?._embedded?.events?.[0];
+    if (!concert) return;
     console.log(data._embedded.events);
-    (0, _modalJs.renderModal)(data._embedded.events, event, modalBody, backdrop);
+    (0, _modalJs.renderModal)(concert, modalBody, backdrop);
+    backdrop.classList.remove("hidden");
 });
 
 },{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/modal.js":"k0hkz","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UYTr":[function(require,module,exports,__globalThis) {
@@ -833,53 +837,21 @@ function renderModal(event, modalBody, backdrop) {
     modalBody.innerHTML = `
     <button type="button" id="closeModal" class="close-btn">\u{2715}</button>
 
-    <img
-      class="modal-img"
-      src="${event.image}"
-      alt="${event.name}"
-    />
+    <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
 
     <h2 class="modal-title">INFO</h2>
-
-    <p class="modal-text">
-      ${event.info}
-    </p>
+    <p class="modal-text">${event.description}</p>
 
     <h2 class="modal-title">WHEN</h2>
-
-    <p class="modal-date">${event.date}</p>
-    <p class="modal-date">${event.time}</p>
+    <p class="modal-date">${event.dates?.start?.localDate}</p>
+    <p class="modal-date">${event.dates?.start?.localTime}</p>
 
     <h2 class="modal-title">WHERE</h2>
-
-    <p class="modal-date">${event.city}</p>
-    <p class="modal-date">${event.place}</p>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.city?.name}</p>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.name}</p>
 
     <h2 class="modal-title">WHO</h2>
-
     <p class="modal-date">${event.name}</p>
-
-    <h2 class="modal-title">PRICES</h2>
-
-    <div class="price-box">
-      <p class="price">Standard ${event.standardPrice}</p>
-
-      <button class="ticket-btn">
-        BUY TICKETS
-      </button>
-    </div>
-
-    <div class="price-box">
-      <p class="price">VIP ${event.vipPrice}</p>
-
-      <button class="ticket-btn">
-        BUY TICKETS
-      </button>
-    </div>
-
-    <button class="author-btn">
-      MORE FROM THIS AUTHOR
-    </button>
   `;
     const btnClose = document.querySelector("#closeModal");
     btnClose.addEventListener("click", function() {
@@ -921,6 +893,6 @@ pagination.addEventListener("click", (e)=>{
     renderPagination(page);
 });
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","../index":"6kb64"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"../index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map

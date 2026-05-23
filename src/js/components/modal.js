@@ -1,55 +1,22 @@
 export function renderModal(event, modalBody, backdrop) {
-     
   modalBody.innerHTML = `
     <button type="button" id="closeModal" class="close-btn">✕</button>
 
-    <img
-      class="modal-img"
-      src="${event.image}"
-      alt="${event.name}"
-    />
+    <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
 
     <h2 class="modal-title">INFO</h2>
-
-    <p class="modal-text">
-      ${event.info}
-    </p>
+    <p class="modal-text">${event.description}</p>
 
     <h2 class="modal-title">WHEN</h2>
-
-    <p class="modal-date">${event.date}</p>
-    <p class="modal-date">${event.time}</p>
+    <p class="modal-date">${event.dates?.start?.localDate}</p>
+    <p class="modal-date">${event.dates?.start?.localTime}</p>
 
     <h2 class="modal-title">WHERE</h2>
-
-    <p class="modal-date">${event.city}</p>
-    <p class="modal-date">${event.place}</p>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.city?.name}</p>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.name}</p>
 
     <h2 class="modal-title">WHO</h2>
-
     <p class="modal-date">${event.name}</p>
-
-    <h2 class="modal-title">PRICES</h2>
-
-    <div class="price-box">
-      <p class="price">Standard ${event.standardPrice}</p>
-
-      <button class="ticket-btn">
-        BUY TICKETS
-      </button>
-    </div>
-
-    <div class="price-box">
-      <p class="price">VIP ${event.vipPrice}</p>
-
-      <button class="ticket-btn">
-        BUY TICKETS
-      </button>
-    </div>
-
-    <button class="author-btn">
-      MORE FROM THIS AUTHOR
-    </button>
   `;
 
   const btnClose = document.querySelector("#closeModal");
@@ -63,6 +30,4 @@ export function renderModal(event, modalBody, backdrop) {
       backdrop.classList.add("hidden");
     }
   });
-
 }
-

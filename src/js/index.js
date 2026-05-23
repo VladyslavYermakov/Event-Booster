@@ -9,6 +9,7 @@ import { renderPagination } from "./components/pagination.js";
 
 const concertsList = document.querySelector(".concerts");
 const modalBody = document.querySelector(".modalBody");
+const backdrop = document.querySelector("#modal");
 
 let currentPage = 0;
 
@@ -26,13 +27,18 @@ renderPagination(loadConcerts);
 
 //fetchByID("17AYv0G65p_a4Yw");
 
-concertsList.addEventListener("click", (event) => {
+concertsList.addEventListener("click", async (event) => {
   const item = event.target.closest(".concert-item");
   if (!item) {
     return;
   }
   const id = item.dataset.id;
-  const data = fetchByID(id);
+  const data = await fetchByID(id);
+  const concert = data?._embedded?.events?.[0];
+  if (!concert) {
+    return;
+  }
   console.log(data._embedded.events);
-  renderModal(data._embedded.events, event, modalBody, backdrop);
+  renderModal(concert, modalBody, backdrop);
+  backdrop.classList.remove("hidden");
 });
