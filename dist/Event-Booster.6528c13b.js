@@ -719,9 +719,12 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "loadConcerts", ()=>loadConcerts);
 var _concertsApiJs = require("./api/concertsApi.js");
 var _concertsJs = require("./components/concerts.js");
+var _modalJs = require("./components/modal.js");
 var _paginationJs = require("./components/pagination.js");
-// import { openModal } from "./components/modal.js";
+//import { openModal } from "./components/modal.js";
 const concertsList = document.querySelector(".concerts");
+const modalBody = document.querySelector(".modalBody");
+const backdrop = document.querySelector(".backdrop");
 let currentPage = 0;
 async function loadConcerts(page = 0) {
     const concerts = await (0, _concertsApiJs.fetchConcerts)(page);
@@ -732,13 +735,15 @@ loadConcerts();
 (0, _paginationJs.renderPagination)(loadConcerts);
 //fetchByID("17AYv0G65p_a4Yw");
 concertsList.addEventListener("click", (event)=>{
-    const item = event.target.closest("concert-item");
+    const item = event.target.closest(".concert-item");
     if (!item) return;
     const id = item.dataset.id;
-    console.log(event.target);
+    const data = (0, _concertsApiJs.fetchByID)(id);
+    console.log(data._embedded.events);
+    (0, _modalJs.renderModal)(data._embedded.events, event, modalBody, backdrop);
 });
 
-},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UYTr":[function(require,module,exports,__globalThis) {
+},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/modal.js":"k0hkz","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UYTr":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchConcerts", ()=>fetchConcerts);
@@ -818,6 +823,71 @@ function renderConcerts(concerts, concertList) {
         <p class="concert-place">${place}</p>
         `;
         concertList.append(item);
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"k0hkz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderModal", ()=>renderModal);
+function renderModal(event, modalBody, backdrop) {
+    modalBody.innerHTML = `
+    <button type="button" id="closeModal" class="close-btn">\u{2715}</button>
+
+    <img
+      class="modal-img"
+      src="${event.image}"
+      alt="${event.name}"
+    />
+
+    <h2 class="modal-title">INFO</h2>
+
+    <p class="modal-text">
+      ${event.info}
+    </p>
+
+    <h2 class="modal-title">WHEN</h2>
+
+    <p class="modal-date">${event.date}</p>
+    <p class="modal-date">${event.time}</p>
+
+    <h2 class="modal-title">WHERE</h2>
+
+    <p class="modal-date">${event.city}</p>
+    <p class="modal-date">${event.place}</p>
+
+    <h2 class="modal-title">WHO</h2>
+
+    <p class="modal-date">${event.name}</p>
+
+    <h2 class="modal-title">PRICES</h2>
+
+    <div class="price-box">
+      <p class="price">Standard ${event.standardPrice}</p>
+
+      <button class="ticket-btn">
+        BUY TICKETS
+      </button>
+    </div>
+
+    <div class="price-box">
+      <p class="price">VIP ${event.vipPrice}</p>
+
+      <button class="ticket-btn">
+        BUY TICKETS
+      </button>
+    </div>
+
+    <button class="author-btn">
+      MORE FROM THIS AUTHOR
+    </button>
+  `;
+    const btnClose = document.querySelector("#closeModal");
+    btnClose.addEventListener("click", function() {
+        backdrop.classList.add("hidden");
+    });
+    backdrop.addEventListener("click", function(e) {
+        if (e.target === backdrop) backdrop.classList.add("hidden");
     });
 }
 
