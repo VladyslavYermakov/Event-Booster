@@ -12,11 +12,11 @@ const concertsList =
 let currentPage = 0;
 
 export async function loadConcerts(page = 0) {
-  const concerts = await fetchConcerts(page);
+    const concerts = await fetchConcerts(page);
 
-  currentPage = concerts.page.number;
+    currentPage = concerts.page.number;
 
-  renderConcerts(concerts, concertsList);
+    renderConcerts(concerts, concertsList);
 }
 
 loadConcerts();
