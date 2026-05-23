@@ -724,12 +724,11 @@ var _paginationJs = require("./components/pagination.js");
 //import { openModal } from "./components/modal.js";
 const concertsList = document.querySelector(".concerts");
 const modalBody = document.querySelector(".modalBody");
-const backdrop = document.querySelector(".backdrop");
 let currentPage = 0;
 async function loadConcerts(page = 0) {
     const concerts = await (0, _concertsApiJs.fetchConcerts)(page);
-    currentPage = concerts.page.number;
     (0, _concertsJs.renderConcerts)(concerts, concertsList);
+    (0, _paginationJs.renderPagination)(page, 30);
 }
 loadConcerts();
 (0, _paginationJs.renderPagination)(loadConcerts);
@@ -895,20 +894,33 @@ function renderModal(event, modalBody, backdrop) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
-var _index = require(".././index");
+var _index = require("../index");
 const pagination = document.querySelector(".pagination-container");
-function renderPagination(loadConcerts) {
-    let markup = "";
-    for(let i = 0; i < 30; i++)markup += `    <button type="button" 
-     class="pagination-btn" data-page="${i}">${i + 1}</button>`;
-    pagination.innerHTML = markup;
+function renderPagination(currentPage = 0, totalPages = 30) {
+    let pages = [];
+    const start = Math.floor(currentPage / 5) * 5;
+    const end = Math.min(start + 5, totalPages);
+    for(let i = start; i < end; i++)pages.push(i);
+    if (end < totalPages) {
+        pages.push("...");
+        pages.push(totalPages - 1);
+    }
+    pagination.innerHTML = pages.map((page)=>page === "..." ? `<span class="dots">...</span>` : `
+          <button
+            class="pagination-btn ${page === currentPage ? "active" : ""}"
+            data-page="${page}"
+          >
+            ${page + 1}
+          </button>
+        `).join("");
 }
-pagination.addEventListener("click", (event)=>{
-    if (!event.target.classList.contains("pagination-btn")) return;
-    const page = Number(event.target.dataset.page);
+pagination.addEventListener("click", (e)=>{
+    if (!e.target.classList.contains("pagination-btn")) return;
+    const page = Number(e.target.dataset.page);
     (0, _index.loadConcerts)(page);
+    renderPagination(page);
 });
 
-},{".././index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","../index":"6kb64"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map

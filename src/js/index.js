@@ -10,15 +10,14 @@ import { renderPagination } from "./components/pagination.js";
 const concertsList = document.querySelector(".concerts");
 const modalBody = document.querySelector(".modalBody");
 
-const backdrop = document.querySelector(".backdrop");
 let currentPage = 0;
 
 export async function loadConcerts(page = 0) {
   const concerts = await fetchConcerts(page);
 
-  currentPage = concerts.page.number;
-
   renderConcerts(concerts, concertsList);
+
+  renderPagination(page, 30);
 }
 
 loadConcerts();
