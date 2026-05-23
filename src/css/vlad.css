@@ -16,6 +16,26 @@
         height: 227px;
     }
 }
+.header-title {
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(220, 86, 197, 1);
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .header-title {
+        font-size: 30px;
+    }
+}
+@media (min-width: 1200px) {
+    .header-title {
+        font-size: 50px;
+    }
+}
+
 .concert-title {
     color: rgba(220, 86, 197, 1);
 }
@@ -24,4 +44,13 @@
 }
 .concert-place {
     color: rgba(255, 255, 255, 1);
+}
+.footer-text {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(147, 147, 147, 1);
 }
