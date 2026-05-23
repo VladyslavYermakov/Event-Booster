@@ -65,3 +65,4 @@ export function renderModal(event, modalBody, backdrop) {
   });
 
 }
+

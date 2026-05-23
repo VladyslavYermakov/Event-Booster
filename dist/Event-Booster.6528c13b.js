@@ -207,11 +207,11 @@
       });
     }
   }
-})({"blEey":[function(require,module,exports,__globalThis) {
+})({"6DHTQ":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 60435;
+var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -730,11 +730,19 @@ async function loadConcerts(page = 0) {
 }
 loadConcerts();
 (0, _paginationJs.renderPagination)(loadConcerts);
+//fetchByID("17AYv0G65p_a4Yw");
+concertsList.addEventListener("click", (event)=>{
+    const item = event.target.closest("concert-item");
+    if (!item) return;
+    const id = item.dataset.id;
+    console.log(event.target);
+});
 
 },{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UYTr":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchConcerts", ()=>fetchConcerts);
+parcelHelpers.export(exports, "fetchByID", ()=>fetchByID);
 const API_KEY = "UOJv5w0xzX0Zk3IQ7DLXZqMUHB8RGG71";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
 async function fetchConcerts(page = 0) {
@@ -742,6 +750,16 @@ async function fetchConcerts(page = 0) {
         const response = await fetch(`${BASE_URL}/events.json?apikey=${API_KEY}&page=${page}`);
         const data = await response.json();
         console.log(data._embedded.events);
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
+}
+async function fetchByID(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/events.json?apikey=${API_KEY}&id=${id}`);
+        const data = await response.json();
+        console.log(data);
         return data;
     } catch (err) {
         console.log(err);
@@ -791,6 +809,8 @@ function renderConcerts(concerts, concertList) {
         const name = concert.name;
         const date = concert.dates.start.localDate;
         const place = concert._embedded?.venues[0]?.name || "Unknown";
+        item.dataset.id = concert.id;
+        item.classList.add("concert-item");
         item.innerHTML = `
         <img class="concert-image" src="${image}" alt="${name}">
         <h3 class="concert-title">${name}</h3>
@@ -819,6 +839,6 @@ pagination.addEventListener("click", (event)=>{
     (0, _index.loadConcerts)(page);
 });
 
-},{".././index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["blEey","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{".././index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map

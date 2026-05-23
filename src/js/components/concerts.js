@@ -1,24 +1,26 @@
 export function renderConcerts(concerts, concertList) {
-    concertList.innerHTML = "";
+  concertList.innerHTML = "";
 
-    const events = concerts._embedded.events;
+  const events = concerts._embedded.events;
 
-    events.forEach(concert => {
-        const item = document.createElement("li");
+  events.forEach((concert) => {
+    const item = document.createElement("li");
 
-        const image = concert.images[0]?.url;
-        const name = concert.name;
-        const date = concert.dates.start.localDate;
-        const place =
-        concert._embedded?.venues[0]?.name || "Unknown";
+    const image = concert.images[0]?.url;
+    const name = concert.name;
+    const date = concert.dates.start.localDate;
+    const place = concert._embedded?.venues[0]?.name || "Unknown";
 
-        item.innerHTML = `
+    item.dataset.id = concert.id;
+    item.classList.add("concert-item");
+
+    item.innerHTML = `
         <img class="concert-image" src="${image}" alt="${name}">
         <h3 class="concert-title">${name}</h3>
         <p class="concert-date">${date}</p>
         <p class="concert-place">${place}</p>
         `;
 
-        concertList.append(item);
-    });
+    concertList.append(item);
+  });
 }
