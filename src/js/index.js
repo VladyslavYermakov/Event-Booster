@@ -9,14 +9,13 @@ import { renderPagination } from "./components/pagination.js";
 const concertsList =
   document.querySelector(".concerts");
 
-let currentPage = 0;
 
 export async function loadConcerts(page = 0) {
-    const concerts = await fetchConcerts(page);
+  const concerts = await fetchConcerts(page);
 
-    currentPage = concerts.page.number;
+  renderConcerts(concerts, concertsList);
 
-    renderConcerts(concerts, concertsList);
+  renderPagination(page, 30);
 }
 
 loadConcerts();

@@ -207,11 +207,11 @@
       });
     }
   }
-})({"6gJgL":[function(require,module,exports,__globalThis) {
+})({"7btzi":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 64340;
+var HMR_SERVER_PORT = 64541;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -722,11 +722,10 @@ var _concertsJs = require("./components/concerts.js");
 var _paginationJs = require("./components/pagination.js");
 // import { openModal } from "./components/modal.js";
 const concertsList = document.querySelector(".concerts");
-let currentPage = 0;
 async function loadConcerts(page = 0) {
     const concerts = await (0, _concertsApiJs.fetchConcerts)(page);
-    currentPage = concerts.page.number;
     (0, _concertsJs.renderConcerts)(concerts, concertsList);
+    (0, _paginationJs.renderPagination)(page, 30);
 }
 loadConcerts();
 (0, _paginationJs.renderPagination)(loadConcerts);
@@ -805,20 +804,33 @@ function renderConcerts(concerts, concertList) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
-var _index = require(".././index");
+var _index = require("../index");
 const pagination = document.querySelector(".pagination-container");
-function renderPagination(loadConcerts) {
-    let markup = "";
-    for(let i = 0; i < 30; i++)markup += `    <button type="button" 
-     class="pagination-btn" data-page="${i}">${i + 1}</button>`;
-    pagination.innerHTML = markup;
+function renderPagination(currentPage = 0, totalPages = 30) {
+    let pages = [];
+    const start = Math.floor(currentPage / 5) * 5;
+    const end = Math.min(start + 5, totalPages);
+    for(let i = start; i < end; i++)pages.push(i);
+    if (end < totalPages) {
+        pages.push("...");
+        pages.push(totalPages - 1);
+    }
+    pagination.innerHTML = pages.map((page)=>page === "..." ? `<span class="dots">...</span>` : `
+          <button
+            class="pagination-btn ${page === currentPage ? "active" : ""}"
+            data-page="${page}"
+          >
+            ${page + 1}
+          </button>
+        `).join("");
 }
-pagination.addEventListener("click", (event)=>{
-    if (!event.target.classList.contains("pagination-btn")) return;
-    const page = Number(event.target.dataset.page);
+pagination.addEventListener("click", (e)=>{
+    if (!e.target.classList.contains("pagination-btn")) return;
+    const page = Number(e.target.dataset.page);
     (0, _index.loadConcerts)(page);
+    renderPagination(page);
 });
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT",".././index":"6kb64"}]},["6gJgL","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","../index":"6kb64"}]},["7btzi","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
