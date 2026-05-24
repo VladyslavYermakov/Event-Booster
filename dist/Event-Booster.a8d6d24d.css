@@ -50,7 +50,10 @@
   }
 }
 
-.pagination-container span {
+.pagination-container {
   color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 /*# sourceMappingURL=Event-Booster.a8d6d24d.css.map */
