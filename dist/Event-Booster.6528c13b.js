@@ -835,7 +835,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderModal", ()=>renderModal);
 function renderModal(event, modalBody, backdrop) {
     modalBody.innerHTML = `
-    <button type="button" id="closeModal" class="close-btn">\u{2715}</button>
+    <button type="button" id="closeModal" class="close-btn">\u{425}</button>
 
     <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
 
