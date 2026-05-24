@@ -4,6 +4,7 @@ import { renderConcerts } from "./components/concerts.js";
 import { renderModal } from "./components/modal.js";
 
 import { renderPagination } from "./components/pagination.js";
+import "./components/search.js";
 
 //import { openModal } from "./components/modal.js";
 

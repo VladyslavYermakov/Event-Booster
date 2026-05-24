@@ -721,6 +721,7 @@ var _concertsApiJs = require("./api/concertsApi.js");
 var _concertsJs = require("./components/concerts.js");
 var _modalJs = require("./components/modal.js");
 var _paginationJs = require("./components/pagination.js");
+var _searchJs = require("./components/search.js");
 //import { openModal } from "./components/modal.js";
 const concertsList = document.querySelector(".concerts");
 const modalBody = document.querySelector(".modalBody");
@@ -746,7 +747,7 @@ concertsList.addEventListener("click", async (event)=>{
     backdrop.classList.remove("hidden");
 });
 
-},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./components/modal.js":"k0hkz"}],"5UYTr":[function(require,module,exports,__globalThis) {
+},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./components/modal.js":"k0hkz","./components/search.js":"8gcwp"}],"5UYTr":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchConcerts", ()=>fetchConcerts);
@@ -927,6 +928,29 @@ function renderModal(event, modalBody, backdrop) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8gcwp":[function(require,module,exports,__globalThis) {
+var _concertsApiJs = require(".././api/concertsApi.js");
+var _concertsJs = require("./concerts.js");
+const searchInput = document.querySelector(".event-search");
+const countrySelect = document.querySelector(".countries");
+const searchBtn = document.querySelector(".event-search-btn");
+const concertsList = document.querySelector(".concerts");
+async function handleSearch() {
+    const keyword = searchInput.value.trim();
+    const country = countrySelect.value;
+    const concerts = await (0, _concertsApiJs.searchConcerts)(keyword, country);
+    if (!concerts?._embedded?.events) {
+        concertsList.innerHTML = "<p>No concerts found</p>";
+        return;
+    }
+    (0, _concertsJs.renderConcerts)(concerts, concertsList);
+}
+searchBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+    handleSearch();
+});
+countrySelect.addEventListener("change", handleSearch);
+
+},{"./concerts.js":"cDCiP",".././api/concertsApi.js":"5UYTr"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
