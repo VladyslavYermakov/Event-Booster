@@ -746,7 +746,7 @@ concertsList.addEventListener("click", async (event)=>{
     backdrop.classList.remove("hidden");
 });
 
-},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./components/modal.js":"k0hkz"}],"5UYTr":[function(require,module,exports,__globalThis) {
+},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/modal.js":"k0hkz","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UYTr":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchConcerts", ()=>fetchConcerts);
@@ -829,6 +829,39 @@ function renderConcerts(concerts, concertList) {
     });
 }
 
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"k0hkz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderModal", ()=>renderModal);
+function renderModal(event, modalBody, backdrop) {
+    modalBody.innerHTML = `
+    <button type="button" id="closeModal" class="close-btn">\u{2715}</button>
+
+    <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
+
+    <h2 class="modal-title">INFO</h2>
+    <p class="modal-text">${event.description}</p>
+
+    <h2 class="modal-title">WHEN</h2>
+    <p class="modal-date">${event.dates?.start?.localDate}</p>
+    <p class="modal-date">${event.dates?.start?.localTime}</p>
+
+    <h2 class="modal-title">WHERE</h2>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.city?.name}</p>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.name}</p>
+
+    <h2 class="modal-title">WHO</h2>
+    <p class="modal-date">${event.name}</p>
+  `;
+    const btnClose = document.querySelector("#closeModal");
+    btnClose.addEventListener("click", function() {
+        backdrop.classList.add("hidden");
+    });
+    backdrop.addEventListener("click", function(e) {
+        if (e.target === backdrop) backdrop.classList.add("hidden");
+    });
+}
+
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"hLT23":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -881,39 +914,6 @@ pagination.addEventListener("click", (e)=>{
     (0, _index.loadConcerts)(page);
 });
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","../index":"6kb64"}],"k0hkz":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "renderModal", ()=>renderModal);
-function renderModal(event, modalBody, backdrop) {
-    modalBody.innerHTML = `
-    <button type="button" id="closeModal" class="close-btn">\u{2715}</button>
-
-    <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
-
-    <h2 class="modal-title">INFO</h2>
-    <p class="modal-text">${event.description}</p>
-
-    <h2 class="modal-title">WHEN</h2>
-    <p class="modal-date">${event.dates?.start?.localDate}</p>
-    <p class="modal-date">${event.dates?.start?.localTime}</p>
-
-    <h2 class="modal-title">WHERE</h2>
-    <p class="modal-date">${event._embedded?.venues?.[0]?.city?.name}</p>
-    <p class="modal-date">${event._embedded?.venues?.[0]?.name}</p>
-
-    <h2 class="modal-title">WHO</h2>
-    <p class="modal-date">${event.name}</p>
-  `;
-    const btnClose = document.querySelector("#closeModal");
-    btnClose.addEventListener("click", function() {
-        backdrop.classList.add("hidden");
-    });
-    backdrop.addEventListener("click", function(e) {
-        if (e.target === backdrop) backdrop.classList.add("hidden");
-    });
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"../index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
