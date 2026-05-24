@@ -15,6 +15,24 @@ export async function fetchConcerts(page = 0) {
   }
 }
 
+export async function searchConcerts(keyword = "", country = "", page = 0) {
+  try {
+    let url = `${BASE_URL}/events.json?apikey=${API_KEY}&page=${page}`;
+
+    if (keyword) {
+      url += `&keyword=${keyword}`;
+    }
+    if (country) {
+      url += `&countryCode=${country}`;
+    }
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function fetchByID(id) {
   try {
     const response = await fetch(
