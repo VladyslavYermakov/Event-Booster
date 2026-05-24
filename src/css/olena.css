@@ -52,7 +52,9 @@
   }
 }
 
-.pagination-container span {
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  
 }
