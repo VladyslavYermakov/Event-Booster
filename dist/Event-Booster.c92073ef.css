@@ -1,7 +1,10 @@
 h1, h2, h3, p, ul, li, input, button, img, a, body {
-  background-color: #000;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #000;
 }
 
 ul, li {
