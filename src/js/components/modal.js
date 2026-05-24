@@ -1,6 +1,6 @@
 export function renderModal(event, modalBody, backdrop) {
   modalBody.innerHTML = `
-    <button type="button" id="closeModal" class="close-btn">✕</button>
+    <button type="button" id="closeModal" class="close-btn">Х</button>
 
     <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
 

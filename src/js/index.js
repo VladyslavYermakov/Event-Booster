@@ -23,7 +23,7 @@ export async function loadConcerts(page = 0) {
 
 loadConcerts();
 
-renderPagination(loadConcerts);
+// renderPagination(loadConcerts);
 
 //fetchByID("17AYv0G65p_a4Yw");
 
