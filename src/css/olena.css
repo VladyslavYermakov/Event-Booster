@@ -58,3 +58,87 @@
   align-items: center;
   color: white;
 }
+
+/* 
+.event-search{
+ padding-left: 30px;
+ margin-bottom: 25px;
+width: 270;
+height: 40;
+border-radius: 20px;
+color:  #939393;
+  background: rgba(255, 255, 255, 0.2);
+ backdrop-filter: blur(20px);
+
+}
+
+.countries{
+padding-left: 30px;
+width: 270;
+height: 40;
+border-radius: 20px;
+color:  #939393;
+  background: rgba(255, 255, 255, 0.2);
+ backdrop-filter: blur(20px);
+}
+
+
+@media (min-width: 768px) and (max-width: 1199px){
+  .event-search{
+     display: block;
+  margin: 0 auto;
+  }
+  .countries{
+      display: block;
+  margin: 0 auto;
+  }
+} */
+
+
+.search-box {
+
+  display: flex;
+  margin-top: 25px;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 10px;
+}
+
+.event-search,
+.countries,
+.event-search-btn {
+  padding: 10px 30px 10px;
+ color: #939393;
+
+font-family: 'Montserrat';
+font-weight: 400;
+font-size: 16px;
+border-radius: 20px;
+background: rgba(255, 255, 255, 0.2);
+ backdrop-filter: blur(20px);
+
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+  .search-box {
+    margin-top: 52px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+
+}
+
+@media (min-width: 1200px) {
+
+  .search-box {
+    margin-top: 52px;
+    gap: 20px;
+  }
+
+
+}
