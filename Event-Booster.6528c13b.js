@@ -207,11 +207,11 @@
       });
     }
   }
-})({"blEey":[function(require,module,exports,__globalThis) {
+})({"6DHTQ":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 60435;
+var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -719,22 +719,38 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "loadConcerts", ()=>loadConcerts);
 var _concertsApiJs = require("./api/concertsApi.js");
 var _concertsJs = require("./components/concerts.js");
+var _modalJs = require("./components/modal.js");
 var _paginationJs = require("./components/pagination.js");
-// import { openModal } from "./components/modal.js";
+//import { openModal } from "./components/modal.js";
 const concertsList = document.querySelector(".concerts");
+const modalBody = document.querySelector(".modalBody");
+const backdrop = document.querySelector("#modal");
 let currentPage = 0;
 async function loadConcerts(page = 0) {
     const concerts = await (0, _concertsApiJs.fetchConcerts)(page);
-    currentPage = concerts.page.number;
     (0, _concertsJs.renderConcerts)(concerts, concertsList);
+    (0, _paginationJs.renderPagination)(page, 30);
 }
 loadConcerts();
 (0, _paginationJs.renderPagination)(loadConcerts);
+//fetchByID("17AYv0G65p_a4Yw");
+concertsList.addEventListener("click", async (event)=>{
+    const item = event.target.closest(".concert-item");
+    if (!item) return;
+    const id = item.dataset.id;
+    const data = await (0, _concertsApiJs.fetchByID)(id);
+    const concert = data?._embedded?.events?.[0];
+    if (!concert) return;
+    console.log(data._embedded.events);
+    (0, _modalJs.renderModal)(concert, modalBody, backdrop);
+    backdrop.classList.remove("hidden");
+});
 
-},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UYTr":[function(require,module,exports,__globalThis) {
+},{"./api/concertsApi.js":"5UYTr","./components/concerts.js":"cDCiP","./components/pagination.js":"hLT23","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./components/modal.js":"k0hkz"}],"5UYTr":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchConcerts", ()=>fetchConcerts);
+parcelHelpers.export(exports, "fetchByID", ()=>fetchByID);
 const API_KEY = "UOJv5w0xzX0Zk3IQ7DLXZqMUHB8RGG71";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
 async function fetchConcerts(page = 0) {
@@ -742,6 +758,16 @@ async function fetchConcerts(page = 0) {
         const response = await fetch(`${BASE_URL}/events.json?apikey=${API_KEY}&page=${page}`);
         const data = await response.json();
         console.log(data._embedded.events);
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
+}
+async function fetchByID(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/events.json?apikey=${API_KEY}&id=${id}`);
+        const data = await response.json();
+        console.log(data);
         return data;
     } catch (err) {
         console.log(err);
@@ -791,6 +817,8 @@ function renderConcerts(concerts, concertList) {
         const name = concert.name;
         const date = concert.dates.start.localDate;
         const place = concert._embedded?.venues[0]?.name || "Unknown";
+        item.dataset.id = concert.id;
+        item.classList.add("concert-item");
         item.innerHTML = `
         <img class="concert-image" src="${image}" alt="${name}">
         <h3 class="concert-title">${name}</h3>
@@ -805,20 +833,66 @@ function renderConcerts(concerts, concertList) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderPagination", ()=>renderPagination);
-var _index = require(".././index");
+var _index = require("../index");
 const pagination = document.querySelector(".pagination-container");
-function renderPagination(loadConcerts) {
-    let markup = "";
-    for(let i = 0; i < 30; i++)markup += `    <button type="button" 
-     class="pagination-btn" data-page="${i}">${i + 1}</button>`;
-    pagination.innerHTML = markup;
+function renderPagination(currentPage = 0, totalPages = 30) {
+    let pages = [];
+    const start = Math.floor(currentPage / 5) * 5;
+    const end = Math.min(start + 5, totalPages);
+    for(let i = start; i < end; i++)pages.push(i);
+    if (end < totalPages) {
+        pages.push("...");
+        pages.push(totalPages - 1);
+    }
+    pagination.innerHTML = pages.map((page)=>page === "..." ? `<span class="dots">...</span>` : `
+          <button
+            class="pagination-btn ${page === currentPage ? "active" : ""}"
+            data-page="${page}"
+          >
+            ${page + 1}
+          </button>
+        `).join("");
 }
-pagination.addEventListener("click", (event)=>{
-    if (!event.target.classList.contains("pagination-btn")) return;
-    const page = Number(event.target.dataset.page);
+pagination.addEventListener("click", (e)=>{
+    if (!e.target.classList.contains("pagination-btn")) return;
+    const page = Number(e.target.dataset.page);
     (0, _index.loadConcerts)(page);
+    renderPagination(page);
 });
 
-},{".././index":"6kb64","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["blEey","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","../index":"6kb64"}],"k0hkz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderModal", ()=>renderModal);
+function renderModal(event, modalBody, backdrop) {
+    modalBody.innerHTML = `
+    <button type="button" id="closeModal" class="close-btn">\u{2715}</button>
+
+    <img class="modal-img" src="${event.images?.[0]?.url}" alt="${event.name}" />
+
+    <h2 class="modal-title">INFO</h2>
+    <p class="modal-text">${event.description}</p>
+
+    <h2 class="modal-title">WHEN</h2>
+    <p class="modal-date">${event.dates?.start?.localDate}</p>
+    <p class="modal-date">${event.dates?.start?.localTime}</p>
+
+    <h2 class="modal-title">WHERE</h2>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.city?.name}</p>
+    <p class="modal-date">${event._embedded?.venues?.[0]?.name}</p>
+
+    <h2 class="modal-title">WHO</h2>
+    <p class="modal-date">${event.name}</p>
+  `;
+    const btnClose = document.querySelector("#closeModal");
+    btnClose.addEventListener("click", function() {
+        backdrop.classList.add("hidden");
+    });
+    backdrop.addEventListener("click", function(e) {
+        if (e.target === backdrop) backdrop.classList.add("hidden");
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
