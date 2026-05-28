@@ -1,8 +1,21 @@
+.image-header-logo{
+    position: fixed;
+    width: 130px;
+    height: 130px;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.50);
+    border-bottom-right-radius: 100%;
+    display: block;
+}
+
 .concert-image {
+    display: block;
     width: 128px;
     height: 161px;
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
+    margin: 0 auto;
 }
 @media (min-width: 768px) and (max-width: 1199px) {
     .concert-image {
@@ -24,6 +37,8 @@
     letter-spacing: 0%;
     text-align: center;
     color: rgba(220, 86, 197, 1);
+    margin-top: 78px;
+    
 }
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-title {
@@ -38,12 +53,60 @@
 
 .concert-title {
     color: rgba(220, 86, 197, 1);
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .concert-title {
+        font-size: 16px;
+    }
+}
+@media (min-width: 1200px) {
+    .concert-title {
+        font-size: 16px;
+    }
 }
 .concert-date{
     color: rgba(255, 255, 255, 1);
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .concert-date {
+        font-size: 16px;
+    }
+}
+@media (min-width: 1200px) {
+    .concert-date {
+        font-size: 16px;
+    }
 }
 .concert-place {
     color: rgba(255, 255, 255, 1);
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .concert-place {
+        font-size: 14px;
+    }
+}
+@media (min-width: 1200px) {
+    .concert-place {
+        font-size: 14px;
+    }
 }
 .footer-text {
     font-family: "Montserrat";

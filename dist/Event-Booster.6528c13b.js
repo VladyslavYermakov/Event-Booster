@@ -951,6 +951,6 @@ searchBtn.addEventListener("click", (e)=>{
 });
 countrySelect.addEventListener("change", handleSearch);
 
-},{".././api/concertsApi.js":"5UYTr","./concerts.js":"cDCiP"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
+},{"./concerts.js":"cDCiP",".././api/concertsApi.js":"5UYTr"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequire70a8", {})
 
 //# sourceMappingURL=Event-Booster.6528c13b.js.map
