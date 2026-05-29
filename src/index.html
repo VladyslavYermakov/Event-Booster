@@ -17,13 +17,16 @@
     <link rel="stylesheet" href="./css/polina.css" />
   </head>
   <body>
-    <header class="header">
+    <header class="header container">
       <a href="" class="header-logo"
         ><img class="image-header-logo" src="./img/Event-booster-logo.svg" alt="logo"
       /></a>
       <h1 class="header-title">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
      <div class="search-box">
-      <input class="event-search" type="text" placeholder="Start searching"/><button class="event-search-btn" type="submit"></button>
+      <div class="search-wrapper">
+        <input class="event-search" type="text" placeholder="Start searching"/>
+        <button class="event-search-btn" type="submit"><img src="./img/event-search.svg" alt=""></button>
+      </div>
       <select class="countries">
         <option value="">Choose country</option>
         <option value="US">United States</option>
@@ -36,7 +39,7 @@
       </select>
     </div>
     </header>
-    <main>
+    <main class="main container">
       <div class="backdrop hidden" id="modal">
         <div class="modalBody"></div>
       </div>
@@ -44,9 +47,9 @@
       <div class="pagination-container"></div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer container">
       <p class="footer-text">
-        © 2021 | All Rights Reserved | Developed with ♥ by GoIT Students
+        © 2021 | All Rights Reserved | Developed with ❤ by GoIT Students
       </p>
     </footer>
     <script type="module" src="./js/index.js"></script>
