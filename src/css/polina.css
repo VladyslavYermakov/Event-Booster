@@ -1,3 +1,4 @@
+/*modat*/
 .backdrop {
   position: fixed;
   top: 0;
@@ -6,12 +7,11 @@
   width: 100%;
   height: 100%;
 
-  background-color: rgba(0, 0, 0, 0.5);
-
   display: flex;
   justify-content: center;
   align-items: center;
 
+  background-color: rgba(14, 14, 14, 1);
   z-index: 1000;
 }
 
@@ -24,14 +24,12 @@
 
   width: 272px;
 
-  background-color: rgba(255, 242, 253, 1);
-  border-top-left-radius: 140px;
-  border-bottom-right-radius: 140px;
+  padding: 75px 17px 40px;
 
-  padding-top: 75px;
-  padding-left: 17px;
-  padding-right: 17px;
-  padding-bottom: 50px;
+  background-color: #fff2fd;
+
+  border-top-left-radius: 150px;
+  border-bottom-right-radius: 150px;
 
   text-align: center;
 
@@ -45,10 +43,12 @@
   right: 25px;
 
   border: none;
-  background-color: transparent;
+  background: transparent;
 
-  font-size: 30px;
-  color: rgba(76, 0, 254, 1);
+  color: #4c00fe;
+
+  font-size: 28px;
+
   cursor: pointer;
 }
 
@@ -60,29 +60,155 @@
 
   object-fit: cover;
 
-  margin-bottom: 25px;
-}
-
-.modal-title {
-  font-size: 20px;
-  font-weight: 700;
-
-  color: rgba(220, 86, 197, 1);
-  margin-bottom: 10px;
-}
-
-.modal-text {
-  font-size: 16px;
-  line-height: 20px;
-
-  color: rgba(14, 14, 14, 1);
   margin-bottom: 20px;
 }
 
-.modal-date {
-  font-size: 16px;
-  line-height: 20px;
+.modal-poster {
+  display: none;
+}
+
+.modal-title {
+  margin-bottom: 7px;
+
+  color: rgba(220, 86, 197, 1);
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-text {
+  margin-bottom: 20px;
 
   color: rgba(14, 14, 14, 1);
-  margin-bottom: 15px;
+
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal-date {
+  margin-bottom: 10px;
+
+  color: rgba(14, 14, 14, 1);
+
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.price-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.price-icon {
+  font-size: 20px;
+}
+
+.price-text {
+  font-size: 16px;
+}
+
+.ticket-btn {
+  width: 145px;
+  height: 40px;
+
+  margin-bottom: 20px;
+
+  border: none;
+  border-radius: 5px;
+
+  background-color: rgba(76, 0, 254, 1);
+
+  color: rgba(255, 242, 253, 1);
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.more-btn {
+  width: 230px;
+  height: 40px;
+
+  margin-top: 10px;
+
+  border: 1px solid rgba(76, 0, 254, 1);
+
+  border-radius: 5px;
+
+  background-color: transparent;
+
+  color: rgba(76, 0, 254, 1);
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+/*таблет*/
+
+@media screen and (min-width: 768px) {
+  .modalBody {
+    width: 595px;
+    height: 831px;
+
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+
+    background-color: rgba(255, 242, 253, 1);
+
+    overflow-y: auto;
+  }
+}
+
+.modal-img {
+  width: 70px;
+  height: 70px;
+
+  margin-bottom: 30px;
+}
+
+.modal-content {
+  display: flex;
+
+  gap: 30px;
+}
+
+.modal-poster {
+  display: block;
+
+  width: 233;
+  height: 416;
+
+  object-fit: cover;
+}
+
+.modal-info {
+  width: 265px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modal-title,
+.modal-text,
+.modal-date {
+  text-align: left;
+}
+
+.price-box {
+  justify-content: flex-start;
+}
+
+.more-btn {
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
 }
