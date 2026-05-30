@@ -76,14 +76,13 @@
     position: relative;
 }
 
-.event-search {
-  padding-right: 50px;
-  padding: 10px 80px 10px 30px;
+
+.event-search::placeholder {
+    color: #939393;
 }
 
 .event-search,
-.countries,
-.event-search-btn {
+.countries {
  color: #939393;
 
 font-family: 'Montserrat';
@@ -97,19 +96,30 @@ border-radius: 20px;
     border: none;
     padding: 10px 113px 10px 30px;
     cursor: pointer;
+    outline: none;
+    transition: transform 0.5s ease;
+}
+.countries:hover {
+    transform: scale(1.05);
 }
 
-.event-search {
 
-  color: #939393;
-  font-family: 'Montserrat';
-  font-weight: 400;
-  font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  outline: none;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
+.event-search {
+    color: #939393;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    padding-right: 50px;
+    padding: 10px 80px 10px 30px;
+    transition: transform 0.5s ease;
+}
+.event-search:hover {
+    transform: scale(1.05);
 }
 
 .event-search-btn {
@@ -121,7 +131,6 @@ border-radius: 20px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-
 }
 
 
