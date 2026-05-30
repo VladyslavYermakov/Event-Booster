@@ -70,11 +70,11 @@
   position: relative;
 }
 
-.event-search {
-  padding: 10px 80px 10px 30px;
+.event-search::placeholder {
+  color: #939393;
 }
 
-.event-search, .countries, .event-search-btn {
+.event-search, .countries {
   color: #939393;
   backdrop-filter: blur(20px);
   border-radius: 20px;
@@ -87,7 +87,13 @@
   cursor: pointer;
   background-color: #fff3;
   border: none;
+  outline: none;
   padding: 10px 113px 10px 30px;
+  transition: transform .5s;
+}
+
+.countries:hover {
+  transform: scale(1.05);
 }
 
 .event-search {
@@ -97,9 +103,15 @@
   border: none;
   border-radius: 20px;
   outline: none;
+  padding: 10px 80px 10px 30px;
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 400;
+  transition: transform .5s;
+}
+
+.event-search:hover {
+  transform: scale(1.05);
 }
 
 .event-search-btn {
