@@ -159,4 +159,75 @@
   margin-right: auto;
   display: block;
 }
+
+@media screen and (width >= 1280px) {
+  .modalBody {
+    width: 930px;
+    min-height: 720px;
+    padding: 40px 30px;
+  }
+
+  .modal-img {
+    width: 132px;
+    height: 132px;
+    margin-bottom: 40px;
+  }
+
+  .modal-content {
+    justify-content: center;
+    gap: 60px;
+    display: flex;
+  }
+
+  .modal-poster {
+    object-fit: cover;
+    width: 360px;
+    height: 510px;
+  }
+
+  .modal-info {
+    width: 450px;
+  }
+
+  .modal-title {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  .modal-text {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .modal-date {
+    text-align: left;
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .price-box {
+    justify-content: flex-start;
+  }
+
+  .price-text {
+    font-size: 18px;
+  }
+
+  .ticket-btn {
+    width: 145px;
+    height: 40px;
+    margin-bottom: 25px;
+  }
+
+  .more-btn {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
 /*# sourceMappingURL=Event-Booster.f5b4ef3a.css.map */
