@@ -151,7 +151,7 @@
 
 /*таблет*/
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .modalBody {
     width: 595px;
     height: 831px;
@@ -213,7 +213,7 @@
   margin-top: 30px;
 }
 
-@media screen and (min-width: 1280px) {
+@media (min-width: 1200px) {
   .modalBody {
     width: 930px;
     min-height: 720px;
