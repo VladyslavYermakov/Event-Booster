@@ -119,45 +119,45 @@
     padding: 30px 30px 50px;
     overflow-y: auto;
   }
-}
 
-.modal-img {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 30px;
-}
+  .modal-img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 30px;
+  }
 
-.modal-content {
-  gap: 30px;
-  display: flex;
-}
+  .modal-content {
+    gap: 30px;
+    display: flex;
+  }
 
-.modal-poster {
-  object-fit: cover;
-  width: 233px;
-  height: 416px;
-  display: block;
-}
+  .modal-poster {
+    object-fit: cover;
+    width: 233px;
+    height: 416px;
+    display: block;
+  }
 
-.modal-info {
-  text-align: left;
-  width: 265px;
-  overflow-y: auto;
-}
+  .modal-info {
+    text-align: left;
+    width: 265px;
+    overflow-y: auto;
+  }
 
-.modal-title, .modal-text, .modal-date {
-  text-align: left;
-}
+  .modal-title, .modal-text, .modal-date {
+    text-align: left;
+  }
 
-.price-box {
-  justify-content: flex-start;
-}
+  .price-box {
+    justify-content: flex-start;
+  }
 
-.more-btn {
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  .more-btn {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
 
 @media (width >= 1200px) {
@@ -183,6 +183,7 @@
     object-fit: cover;
     width: 360px;
     height: 510px;
+    display: block;
   }
 
   .modal-info {
