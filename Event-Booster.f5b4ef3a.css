@@ -111,7 +111,7 @@
   font-size: 16px;
 }
 
-@media screen and (width >= 768px) {
+@media (width >= 768px) and (width <= 1199px) {
   .modalBody {
     background-color: #fff2fd;
     width: 595px;
@@ -119,44 +119,116 @@
     padding: 30px 30px 50px;
     overflow-y: auto;
   }
+
+  .modal-img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 30px;
+  }
+
+  .modal-content {
+    gap: 30px;
+    display: flex;
+  }
+
+  .modal-poster {
+    object-fit: cover;
+    width: 233px;
+    height: 416px;
+    display: block;
+  }
+
+  .modal-info {
+    text-align: left;
+    width: 265px;
+    overflow-y: auto;
+  }
+
+  .modal-title, .modal-text, .modal-date {
+    text-align: left;
+  }
+
+  .price-box {
+    justify-content: flex-start;
+  }
+
+  .more-btn {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
 
-.modal-img {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 30px;
-}
+@media (width >= 1200px) {
+  .modalBody {
+    width: 930px;
+    min-height: 720px;
+    padding: 40px 30px;
+  }
 
-.modal-content {
-  gap: 30px;
-  display: flex;
-}
+  .modal-img {
+    width: 132px;
+    height: 132px;
+    margin-bottom: 40px;
+  }
 
-.modal-poster {
-  object-fit: cover;
-  width: 233px;
-  height: 416px;
-  display: block;
-}
+  .modal-content {
+    justify-content: center;
+    gap: 60px;
+    display: flex;
+  }
 
-.modal-info {
-  text-align: left;
-  width: 265px;
-  overflow-y: auto;
-}
+  .modal-poster {
+    object-fit: cover;
+    width: 360px;
+    height: 510px;
+    display: block;
+  }
 
-.modal-title, .modal-text, .modal-date {
-  text-align: left;
-}
+  .modal-info {
+    width: 450px;
+  }
 
-.price-box {
-  justify-content: flex-start;
-}
+  .modal-title {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
 
-.more-btn {
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  .modal-text {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .modal-date {
+    text-align: left;
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .price-box {
+    justify-content: flex-start;
+  }
+
+  .price-text {
+    font-size: 18px;
+  }
+
+  .ticket-btn {
+    width: 145px;
+    height: 40px;
+    margin-bottom: 25px;
+  }
+
+  .more-btn {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
 /*# sourceMappingURL=Event-Booster.f5b4ef3a.css.map */
